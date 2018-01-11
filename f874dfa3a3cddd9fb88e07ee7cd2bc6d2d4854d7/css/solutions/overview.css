@@ -1,0 +1,9 @@
+.banner .banner-image {
+	/*background-image: url(../../images/test-tubes.jpeg);*/
+	background-image: url(../../images/radar.jpg);
+	background-position: 0px -27px;
+    background-size: 103% 115%;
+	/*background-position: 0px -110px;
+    background-size: 100%;*/
+	background-repeat: no-repeat;
+}

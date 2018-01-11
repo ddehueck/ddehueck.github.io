@@ -1,0 +1,6 @@
+.banner .banner-image {
+	background-image: url(../../images/new-york.jpg);
+	background-position: 0px -195px; /* Or it could be 100% x -(px's down) */
+	background-size: 100%; /* The zoom */
+	background-repeat: no-repeat;
+}
