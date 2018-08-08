@@ -1,5 +1,7 @@
 var img = document.querySelector('.dot-portrait img');
 
+console.log(img)
+
 new BreathingHalftone( img, {
   dotSize: 1/200,
   dotSizeThreshold: 0.01,
