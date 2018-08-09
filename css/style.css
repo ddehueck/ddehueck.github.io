@@ -3,12 +3,23 @@
 -----------------------*/
 
 body {
-  font-family: 'Open Sans', sans-serif;
-  margin: 0;
+  font-family: monospace;
+  color: #2d3436;
+  margin: 25px;
   padding: 0;
 }
 
-.jumbo h1 {
-  font-size: 72px;
-  font-weight: 300;
+h1, h2 {
+	font-size: 16px;
+	text-transform: uppercase;
+}
+
+p , li{
+	font-size: 14px;
+	line-height: 25px;
+}
+
+main {
+	max-width: 800px;
+	margin: 0 auto;
 }
