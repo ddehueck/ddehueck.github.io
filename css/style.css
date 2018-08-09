@@ -1,11 +1,9 @@
-/*-----------------------
-    Mobile
------------------------*/
+/*-----------------------------------
+Goal - as few lines of CSS possible
+-----------------------------------*/
 
 body {
   font-family: monospace;
-  color: #2d3436;
-  background: #eee;
   margin: 25px;
   padding: 0;
 }
@@ -22,5 +20,12 @@ p , li{
 
 main {
 	max-width: 800px;
-	margin: 0 auto;
+}
+
+img {
+	width: 100%;
+}
+
+.right {
+	text-align: right;
 }
