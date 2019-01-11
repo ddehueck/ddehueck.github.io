@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>BostonCracks - bostonhacks 2018 submission - Devin de Hueck's personal site.</title>
+        <link rel="shortcut icon" type="image/png" href="../images/favicon.png"/>
+        <meta name="description" content="My Team's Bostonhacks 2017 submission which won the healthcare/wellness solution prize.">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name=viewport content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../css/style.css">
+    </head>
+    <body>
+        <main>
+            <h1>BostonCracks - bostonhacks 2018 submission</h1>
+            <p>My team's bostonhacks 2018 submission which won the data science track. We submitted our solution to a problem proposed by the City of Boston.</p>
+
+            <h2>Code</h2>
+            <p>Github repo is <a href="https://github.com/samc24/BostonCracks">here</a>. Also be sure to check out our <a href="https://devpost.com/software/bostoncracks">devpost</a>!</p>
+
+            <h2>Tools</h2>
+            <ul>
+                <li><a href="https://pytorch.org/">PyTorch</a></li>
+            </ul>
+
+            <h2>Our Pitch to the Judges: The Problem - The Solution</h2>
+            
+            <h2>The Problem</h2>
+            <p><strong>Challenge 1: Match Boston’s Ground Truth Sidewalk Data</strong> - <i>Use Google Maps to try to replicate our sidewalk condition findings from 2014, to see if using this way is a viable option in the future.</i></p>
+            <p>In 2014, the City of Boston's team in charge of sidewalk repairs walked every inch of Boston's sidewalks. As they walked, they marked the degree to which the sidewalk was damaged and the precise location of the damaged sidewalk. While this method establishes a ground truth, it comes at a high cost - it's just not realistic for a team to consistenly examine every sidewalk in Boston. Because of this, they asked us to find them a solution.</p>
+            
+            <h1 id="the-solution-medifi">The Solution &amp; BostonCracks</h1>
+            <p><strong>Sidewalk Segmentation</strong></p>
+            <p>If we want to be able to use Google Maps in order to replicate the city's 2014 findings we must be able to separate the sidewalk from any other aspects of a city scene. When using google street view this problem of separation becomes one very similar to the semantic image segmentation problem that self-driving cars face. With this realization, we decided to use a pre-trained <a href="https://arxiv.org/pdf/1706.05587.pdf">DeepLabV3</a> model to help us solve this problem. This pre-trained model fits directly with this problem as it was trained on the <a href="https://www.cityscapes-dataset.com/">Cityscapes Dataset</a> which translates very well to the urban environment of Boston. What DeepLabV3 allows us to do is to take an image from google maps and get rid of everything but the sidewalk. For example:</p>
+						
+						<p><strong>First, we provide an image from google maps: </strong></p>
+            <img src="https://i.imgur.com/aeVgRMd.jpg" alt="First, we provide an image from Google Maps">
+
+            <p><strong>Then the DeepLabV3 model segments the image: </strong></p>
+            <img src="https://i.imgur.com/LoPdezX.jpg" alt="Then the DeepLabV3 model segments the image">
+
+            <p><strong>Finally, we apply one last image pre-processing step and crop out everything but the sidewalk: </strong></p>
+            <img src="https://i.imgur.com/LX5Y10X.png" alt="Finally, we apply one last image pre-processing step and crop out everything but the sidewalk">
+
+            <p>Now we can feed these isolated sidewalks into a classifier to determine if the sidewalk needs repairs!</p>
+
+            <p><strong>Sidewalk Damage Classification</strong></p>
+            <p><strong>The Dataset:</strong> The possibility of finding a dataset containing damage scores for semantically segmented sidewalk was never even close to probable. Because of this, we were forced to make our own dataset, but because of Boston's StreetCaster project, we weren't running around blind. By extracting the latitude and longitude from the StreetCaster dataset we knew where to look for damaged sidewalks in Google Maps, and just about how damaged they should be. With this approach, we were successful in creating a small dataset (albeit tiny for ML) of labeled semantically segmented sidewalks.</p>
+
+            <p><strong>The Architecture and Transfer Learning:</strong> At the center of any meaningful machine learning model is the data, but once the data is collected we need an architecture to best utilize such data. We decided to choose ResNet18 as our model. Because we were limited by both time and amount of data we opted to use a pre-trained ResNet18 model and transfer its already learned features to this task of sidewalk damage scoring. This process, known as transfer learning allows us, in a sense, to teach a model that already knows how to see to simply make meaning of the things it detects in our dataset's images.</p>
+
+            <p><strong>The Results:</strong> After training for 100 epochs (iterations over the dataset) we saw the model successfully learn. However, it is questionable if the model was actually picking up on relevant features as the dataset the model was trained on is, as previously mentioned, tiny for an ML task. We do believe that our results lead to the conclusion that this is a worthwhile approach given additional time and resources.</strong></p>
+
+            <img src="https://i.imgur.com/6HQNGGx.png" style="width: 400px;" alt="The loss curve during training - this does not show generalization to new data.">
+
+            <p><strong>Summary Of Our Model's Design</strong></p>
+            <img src="https://i.imgur.com/BUpv1K8.png" alt="DeepLabV3 segmentation model's output fed into a fine tuned ResNet18 model. Ultimately classifies an image as damaged or not.">
+
+            <h2>The team</h2>
+            <ul>
+                <li>Devin de Hueck</li>
+                <li>Darcy Meyer</li>
+                <li>Sameer Chaturvedi</li>
+            </ul>
+        </main>
+    </body>
+</html>
