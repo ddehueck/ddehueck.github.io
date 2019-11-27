@@ -1,0 +1,19 @@
+{ 
+   "data":[ 
+      { 
+         "citation":"Test Citation 1",
+         "link":"https://github.com/ddehueck/",
+         "notes":"These are notes for Test citation 1",
+         "created_at":1574808190.6686258316,
+         "id":"8675485a-6bba-4a81-a59e-76534b47e984"
+      },
+      { 
+         "citation":"Test Citation 2",
+         "link":"https://github.com/ddehueck/",
+         "notes":"These are notes for Test citation 2",
+         "created_at":1574808259.9458601475,
+         "id":"64e0f645-8b77-49bf-8eed-c3207102dea3"
+      }
+   ],
+   "last_updated":1574808259.9460411072
+}
