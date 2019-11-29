@@ -1,7 +1,5 @@
 
 function loadListFromData(array, id, key) {
-  // Sort by date
-  array.sort((a,b) => b.created_at - a.created_at);
   // Reference list to add papers to
   let ul = document.getElementById(id);
   array.forEach(obj => {

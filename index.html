@@ -68,6 +68,7 @@
                  Doing Now
       -----------------------------*/
       // Only show first 5
+      sortByCreatedDate(papers.data)
       let doingNowData = doingNow.data.slice(0, 4);
       loadListFromData(doingNowData, "doing-now-list", "description")
 
@@ -75,6 +76,7 @@
                  Papers
       -----------------------------*/
       // Only show first 5
+      sortByCreatedDate(papers.data)
       let paperData = papers.data.slice(0, 4);
       loadListFromData(paperData, "papers-list", "citation")
     </script>
