@@ -53,12 +53,14 @@
       /*-----------------------------
                  Summary
       -----------------------------*/
+      sortByCreatedDate(summarys.data)
       let summaryData = summarys.data[0]
       addDataToTag("summary", summaryData.summary)
 
       /*-----------------------------
                  Description
       -----------------------------*/
+      sortByCreatedDate(descriptions.data)
       let descData = descriptions.data[0]
       addDataToTag("description", descData.description)
 

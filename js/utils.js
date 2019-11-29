@@ -16,3 +16,7 @@ function addDataToTag(id, data) {
   elem.innerHTML = data;
 }
 
+function sortByCreatedDate(array) {
+  array.sort((a,b) => b.created_at - a.created_at);
+}
+
