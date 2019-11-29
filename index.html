@@ -6,6 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name=viewport content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./css/style.css">
+        <script type="text/javascript" src="data/papers.js"></script>
     </head>
     <body>
         <main>
@@ -33,9 +34,27 @@
                 <li><a href="./projects/pytorch-neat.html">PyTorch-NEAT [2018]</a> - A PyTorch implementation of Kenneth O. Stanley's Neuroevolution of Augmenting Topologies (NEAT) <a href="http://nn.cs.utexas.edu/downloads/papers/stanley.ec02.pdf">paper</a>.</li>
                 <li><a href="./projects/arxival.html">Arxival.org [2016]</a> - A 'featurized' <a href="https://arxiv.org">arxiv.org</a> to make keeping up with research papers simpler and more organized.</li>
             </ul>
+
+            <h2>Papers I've been reading<br>__<br></h2>
+            <p>I decided to keep track of all the papers I've been reading here!</p>
+            <ul id="papers-list">
+              <!-- Loaded from JS file -->
+            </ul>
             
             <h2>Contact Me<br>__<br></h2>
             <p>Email: <a href="mailto:ddehueck@bu.edu">ddehueck@bu.edu</a> | Twitter: <a href="https://twitter.com/ddehueck">@ddehueck</a></p>
         </main>
     </body>
+    <script type="text/javascript">
+      let paperData = data.data
+      // Sort by date
+      paperData.sort((a,b) => b.created_at - a.created_at);
+      // Reference list to add papers to
+      let ul = document.getElementById("papers-list");
+      paperData.forEach(paperObj => {
+        let li = document.createElement("li");
+        li.innerHTML = paperObj.citation;
+        ul.appendChild(li);
+      });
+    </script>
 </html>
