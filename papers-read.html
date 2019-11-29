@@ -6,13 +6,34 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name=viewport content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./css/style.css">
+        <script type="text/javascript" src="data/papers.js"></script>
     </head>
     <body>
         <main>
             <h1>Papers Read</h1>
             <p>I make an effort to read 5-10 machine learning research papers a week. I've decided to list and briefly comment on the ones that catch my eye.</p>
-            <ul>
+            <ul id="papers-list">
             </ul>
         </main>
     </body>
+
+    <script type="text/javascript">
+      // Only show first 5
+      let paperData = data.data;
+      // Sort by date
+      paperData.sort((a,b) => b.created_at - a.created_at);
+      // Reference list to add papers to
+      let ul = document.getElementById("papers-list");
+      paperData.forEach(paperObj => {
+        console.log(paperObj);
+        console.log(paperObj.notes);
+        let li = document.createElement("li");
+        li.innerHTML = `
+          <p class="citation"><strong>Citation:</strong><br>${paperObj.citation}</p>
+          <p class="notes"><strong>Notes:</strong><br>${paperObj.notes}</p>
+        `;
+        ul.appendChild(li);
+      });
+    </script>
+
 </html>

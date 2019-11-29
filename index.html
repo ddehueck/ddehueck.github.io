@@ -28,15 +28,15 @@
             </ul>
 
             <h2>Projects<br>__<br></h2>
-            <p>Click to go to the project's page! Or <a href="./projects.html">view all my projects here.</a></p>
+            <p>Click to go to the project's page! Or <a href="./projects.html">view all my projects here</a>.</p>
             <ul>
                 <li><a href="./projects/bostonhacks-2018.html">BostonCracks - bostonhacks [2018] submission</a> - My team's submission which won the data science track.</li>
                 <li><a href="./projects/pytorch-neat.html">PyTorch-NEAT [2018]</a> - A PyTorch implementation of Kenneth O. Stanley's Neuroevolution of Augmenting Topologies (NEAT) <a href="http://nn.cs.utexas.edu/downloads/papers/stanley.ec02.pdf">paper</a>.</li>
                 <li><a href="./projects/arxival.html">Arxival.org [2016]</a> - A 'featurized' <a href="https://arxiv.org">arxiv.org</a> to make keeping up with research papers simpler and more organized.</li>
             </ul>
 
-            <h2>Papers I've been reading<br>__<br></h2>
-            <p>I decided to keep track of all the papers I've been reading here!</p>
+            <h2>Recent Research Papers I've Read<br>__<br></h2>
+            <p>I decided to keep track of all the papers I've been reading here! These are just the most recent <a href="./papers-read.html">view all here</a>.</p>
             <ul id="papers-list">
               <!-- Loaded from JS file -->
             </ul>
@@ -45,8 +45,10 @@
             <p>Email: <a href="mailto:ddehueck@bu.edu">ddehueck@bu.edu</a> | Twitter: <a href="https://twitter.com/ddehueck">@ddehueck</a></p>
         </main>
     </body>
+
     <script type="text/javascript">
-      let paperData = data.data
+      // Only show first 5
+      let paperData = data.data.slice(0, 5);
       // Sort by date
       paperData.sort((a,b) => b.created_at - a.created_at);
       // Reference list to add papers to
@@ -57,4 +59,5 @@
         ul.appendChild(li);
       });
     </script>
+
 </html>
