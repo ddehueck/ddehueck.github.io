@@ -6,7 +6,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name=viewport content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./css/style.css">
+        <!-- Data Loading Scripts -->
+        <script type="text/javascript" src="js/utils.js"></script>
         <script type="text/javascript" src="data/papers.js"></script>
+        <script type="text/javascript" src="data/doing-now.js"></script>
     </head>
     <body>
         <main>
@@ -19,12 +22,10 @@
             <h2>Description<br>__<br></h2>
             <p>I program a lot - usually in Python or Javascript. I've also worked with Java, C, C++, and of course HTML/CSS. Some of my favorite frameworks include: PyTorch for deep learning or neuroevolution - NodeJS, ExpressJS, Django, and &lt;insert some frontend JS framework here/&gt; for web development. You can find my <a href="https://github.com/ddehueck">Github here</a> and my <a href="./documents/resume-fall-2019.pdf">Resume here</a>. I also like to read (I'm currently reading: <a href="https://en.wikipedia.org/wiki/When_Einstein_Walked_with_G%C3%B6del"><i>When Einstein Walked with Gödel</i></a>).</p>
             
-            <h2>What I'm doing now - winter 2018<br>__<br></h2>
-            <ul>
-                <li>Building an online repository for computer vision datasets and tools for the computer vision foundation (CVF). Team includes students and professors from Notre Dame, University of Michigan, and Boston University.</li>
-                <li>Leading a study group covering Stanford's course: CS231n (Convolutional Neural Networks for Visual Recognition).</li>
-                <li>Reading 5-10 machine learning research papers a week. Trying to learning more about SOTA in explainable ML.</li>
-                <li>Preparing our spring workshops for Boston University Machine Intelligence Community (<a href="http://mic.bu.edu/">BUMIC</a>)</li>
+            <h2>What I'm doing now<br>__<br></h2>
+            <p>This is an up-to-date (hopefully) summary of what I am currently spending time on. See <a href="./doing-now.html">past entries here</a>.</p>
+            <ul id="doing-now-list">
+              <!-- Loaded from JS file -->
             </ul>
 
             <h2>Projects<br>__<br></h2>
@@ -47,17 +48,19 @@
     </body>
 
     <script type="text/javascript">
+      /*-----------------------------
+                 Doing Now
+      -----------------------------*/
+      // Only show first 5
+      let doingNowData = doingNow.data.slice(0, 5);
+      loadListFromData(doingNowData, "doing-now-list", "description")
+
+      /*-----------------------------
+                 Papers
+      -----------------------------*/
       // Only show first 5
       let paperData = papers.data.slice(0, 5);
-      // Sort by date
-      paperData.sort((a,b) => b.created_at - a.created_at);
-      // Reference list to add papers to
-      let ul = document.getElementById("papers-list");
-      paperData.forEach(paperObj => {
-        let li = document.createElement("li");
-        li.innerHTML = paperObj.citation;
-        ul.appendChild(li);
-      });
+      loadListFromData(paperData, "papers-list", "citation")
     </script>
 
 </html>

@@ -25,8 +25,6 @@
       // Reference list to add papers to
       let ul = document.getElementById("papers-list");
       paperData.forEach(paperObj => {
-        console.log(paperObj);
-        console.log(paperObj.notes);
         let li = document.createElement("li");
         li.innerHTML = `
           <p class="citation"><strong>Citation:</strong><br>${paperObj.citation}</p>

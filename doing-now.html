@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>What I've been doing - Devin de Hueck's personal site.</title>
+        <link rel="shortcut icon" type="image/png" href="./images/favicon.png"/>
+        <meta name="description" content="All updates of what I've been doing.">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name=viewport content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./css/style.css">
+        <script type="text/javascript" src="data/doing-now.js"></script>
+    </head>
+    <body>
+        <main>
+            <h1>What I've been doing - Going all the way back!</h1>
+            <p>Here is where I keep a list of all the updates I've provided to this site. Hopefully it's worth reading.</p>
+            <ul id="entry-list">
+            </ul>
+        </main>
+    </body>
+
+    <script type="text/javascript">
+      // Only show first 5
+      let doingNowData = doingNow.data;
+      // Sort by date
+      doingNowData.sort((a,b) => b.created_at - a.created_at);
+      // Reference list to add papers to
+      let ul = document.getElementById("entry-list");
+      doingNowData.forEach(obj => {
+        let li = document.createElement("li");
+        let date = new Date(obj.created_at * 1000)
+        li.innerHTML = `
+          <p class="desc">${obj.description} <br> <b>Added At:</b> ${date}</p>
+        `;
+        ul.appendChild(li);
+      });
+    </script>
+
+</html>
